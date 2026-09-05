@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@700;800&family=Big+Shoulders+Stencil+Display:wght@700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Merriweather:wght@700&family=Newsreader:opsz,wght@6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-CiKcOOW4.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DbcBoHvb.css">
+    <script type="module" crossorigin src="./assets/index-Bi0nXHDp.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-sAJ9WsQH.css">
   </head>
   <body data-typography="modernist">
     <aside class="prototype-bar" aria-label="Prototype controls" hidden>
@@ -43,20 +43,20 @@
       <section class="browse-header" aria-labelledby="page-title">
         <div class="hero-brand">
           <h1 id="page-title">
-            <button class="home-button" id="go-home" type="button" aria-label="Aftermatch home">
+            <button class="home-button" id="go-home" type="button" data-i18n-aria-label="app.home">
               <img src="./assets/aftermatch-wordmark-dark-v2-640-B35NCqX9.png" width="640" height="98" alt="">
             </button>
           </h1>
-          <p class="tagline">Football worth watching.</p>
+          <p class="tagline" data-i18n="app.tagline">Football worth watching.</p>
         </div>
         <div class="football-hero">
-          <canvas class="football-hero-ball" data-football-hero role="img" aria-label="Halftone football"></canvas>
+          <canvas class="football-hero-ball" data-football-hero role="img" data-i18n-aria-label="app.heroAlt" aria-label="Halftone football"></canvas>
         </div>
         <div class="browse-actions">
-          <div class="view-switch" role="group" aria-label="Quick time range">
-            <button class="view-button is-active" type="button" data-range="3d" aria-pressed="true">3 days</button>
-            <button class="view-button" type="button" data-range="7d" aria-pressed="false">7 days</button>
-            <button class="view-button" type="button" data-range="30d" aria-pressed="false">30 days</button>
+          <div class="view-switch" role="group" data-i18n-aria-label="range.group" aria-label="Quick time range">
+            <button class="view-button is-active" type="button" data-range="3d" aria-pressed="true" data-i18n="range.3d">3 days</button>
+            <button class="view-button" type="button" data-range="7d" aria-pressed="false" data-i18n="range.7d">7 days</button>
+            <button class="view-button" type="button" data-range="30d" aria-pressed="false" data-i18n="range.30d">30 days</button>
           </div>
           <button class="explore-button" id="open-explore" type="button" aria-haspopup="dialog">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -67,33 +67,40 @@
               <path d="M10 17h10"></path>
               <circle cx="8" cy="17" r="2"></circle>
             </svg>
-            <span>Explore</span>
+            <span data-i18n="explore.open">Explore</span>
             <span class="explore-status" aria-hidden="true"></span>
           </button>
         </div>
       </section>
 
       <div id="status-region" aria-live="polite"></div>
-      <section id="match-list" class="match-list" aria-label="Matches"></section>
+      <section id="match-list" class="match-list" data-i18n-aria-label="list.aria" aria-label="Matches"></section>
 
       <footer class="app-footer utility-actions">
         <div class="footer-links">
-          <button class="about-trigger" id="open-about" type="button" aria-haspopup="dialog" aria-label="What is Aftermatch?">
-            <span class="about-label">What is Aftermatch?</span>
+          <button class="about-trigger" id="open-about" type="button" aria-haspopup="dialog" data-i18n-aria-label="footer.about">
+            <span class="about-label" data-i18n="footer.about">What is Aftermatch?</span>
           </button>
-          <button class="about-trigger" id="open-scoring" type="button" aria-haspopup="dialog" aria-label="How scoring works">
-            <span class="about-label">How scoring works</span>
+          <button class="about-trigger" id="open-scoring" type="button" aria-haspopup="dialog" data-i18n-aria-label="footer.scoring">
+            <span class="about-label" data-i18n="footer.scoring">How scoring works</span>
           </button>
-          <button class="about-trigger" id="open-coverage" type="button" aria-haspopup="dialog" aria-label="Coverage">
-            <span class="about-label">Coverage</span>
+          <button class="about-trigger" id="open-coverage" type="button" aria-haspopup="dialog" data-i18n-aria-label="footer.coverage">
+            <span class="about-label" data-i18n="footer.coverage">Coverage</span>
           </button>
         </div>
-        <div>
+        <div class="footer-meta">
           <div class="freshness" aria-live="polite">
             <span class="freshness-copy">
-              <span id="generated-at">Updating&hellip;</span>
+              <span id="generated-at" data-i18n="footer.updating">Updating&hellip;</span>
               <span id="time-zone"></span>
             </span>
+          </div>
+          <div class="language-switcher">
+            <button class="about-trigger language-trigger" id="open-language" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="language-menu">
+              <span class="language-flag" id="language-flag" aria-hidden="true"></span>
+              <span class="language-name" id="language-name">English</span>
+            </button>
+            <div class="language-menu" id="language-menu" role="menu" data-i18n-aria-label="language.label" hidden></div>
           </div>
         </div>
       </footer>
@@ -102,8 +109,8 @@
     <dialog id="about-dialog" class="about-dialog" aria-labelledby="about-title" closedby="any">
       <article>
         <header>
-          <h2 id="about-title" tabindex="-1">What is Aftermatch?</h2>
-          <button class="dialog-close" id="close-about" type="button" aria-label="Close About Aftermatch" title="Close">
+          <h2 id="about-title" tabindex="-1" data-i18n="about.title">What is Aftermatch?</h2>
+          <button class="dialog-close" id="close-about" type="button" data-i18n-aria-label="about.close" data-i18n-title="about.close">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18 6 6 18"></path>
               <path d="m6 6 12 12"></path>
@@ -112,29 +119,29 @@
         </header>
         <div class="about-body">
           <div class="about-lead">
-            <p>Between the top flights, divisions below, cups and tournaments, there is more football than anyone can keep up with.</p>
-            <p>A league you've always wanted to check out. An FA Cup third round that crams 32 fixtures into four days.</p>
-            <p><strong>Aftermatch</strong> scores every finished match on drama, stakes and spectacle, and points you to the few that earn 90 minutes of your time.</p>
-            <p>All without giving away what happened.</p>
+            <p data-i18n="about.lead1">Between the top flights, divisions below, cups and tournaments, there is more football than anyone can keep up with.</p>
+            <p data-i18n="about.lead2">A league you've always wanted to check out. An FA Cup third round that crams 32 fixtures into four days.</p>
+            <p data-i18n-html="about.lead3"><strong>Aftermatch</strong> scores every finished match on drama, stakes and spectacle, and points you to the few that earn 90 minutes of your time.</p>
+            <p data-i18n="about.lead4">All without giving away what happened.</p>
           </div>
           <div class="about-points">
             <section>
-              <h3>One number.</h3>
-              <p>Every completed match gets a score from <strong>0</strong> to <strong>100</strong>.</p>
+              <h3 data-i18n="about.point1Title">One number.</h3>
+              <p data-i18n-html="about.point1Body">Every completed match gets a score from <strong>0</strong> to <strong>100</strong>.</p>
             </section>
             <section>
-              <h3>No spoilers.</h3>
-              <p>The listings show the fixture and the score. Nothing else.</p>
+              <h3 data-i18n="about.point2Title">No spoilers.</h3>
+              <p data-i18n="about.point2Body">The listings show the fixture and the score. Nothing else.</p>
             </section>
             <section>
-              <h3>Growing coverage.</h3>
-              <p>More competitions and past seasons are added over time.</p>
+              <h3 data-i18n="about.point3Title">Growing coverage.</h3>
+              <p data-i18n="about.point3Body">More competitions and past seasons are added over time.</p>
             </section>
           </div>
         </div>
-        <nav class="info-pagination is-next" aria-label="About Aftermatch pages">
+        <nav class="info-pagination is-next" data-i18n-aria-label="about.pages" aria-label="About Aftermatch pages">
           <button id="about-to-scoring" type="button">
-            <span>How scoring works</span>
+            <span data-i18n="footer.scoring">How scoring works</span>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
@@ -147,8 +154,8 @@
     <dialog id="scoring-dialog" class="about-dialog scoring-dialog" aria-labelledby="scoring-title" closedby="any">
       <article>
         <header>
-          <h2 id="scoring-title" tabindex="-1">How scoring works</h2>
-          <button class="dialog-close" id="close-scoring" type="button" aria-label="Close How scoring works" title="Close">
+          <h2 id="scoring-title" tabindex="-1" data-i18n="scoring.title">How scoring works</h2>
+          <button class="dialog-close" id="close-scoring" type="button" data-i18n-aria-label="scoring.close" data-i18n-title="scoring.close">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18 6 6 18"></path>
               <path d="m6 6 12 12"></path>
@@ -157,33 +164,33 @@
         </header>
         <div class="scoring-body">
           <section class="scoring-section">
-            <p>When a match finishes, we run it through the scoring model. It looks at how the likely result shifted across the 90 minutes, when those shifts happened, how long the outcome stayed in doubt, and how the finish compared to what the bookmakers expected beforehand.</p>
-            <p>Goals, cards, penalties and saves feed in as well, alongside rivalry and whatever was riding on the result.</p>
-            <p>Late drama counts for more than early drama. A big occasion raises the score of a good match, though it can't rescue a flat one, and a single wild moment in an otherwise quiet game only goes so far. All of it comes out as one number between <strong class="scoring-value score-0">0</strong> and <strong class="scoring-value score-6">100</strong>.</p>
+            <p data-i18n="scoring.body1">When a match finishes, we run it through the scoring model. It looks at how the likely result shifted across the 90 minutes, when those shifts happened, how long the outcome stayed in doubt, and how the finish compared to what the bookmakers expected beforehand.</p>
+            <p data-i18n="scoring.body2">Goals, cards, penalties and saves feed in as well, alongside rivalry and whatever was riding on the result.</p>
+            <p data-i18n-html="scoring.body3">Late drama counts for more than early drama. A big occasion raises the score of a good match, though it can't rescue a flat one, and a single wild moment in an otherwise quiet game only goes so far. All of it comes out as one number between <strong class="scoring-value score-0">0</strong> and <strong class="scoring-value score-6">100</strong>.</p>
           </section>
           <section class="scoring-section">
-            <h3>What the numbers mean</h3>
-            <p>Think of the score as a viewing queue, not a verdict on the teams.</p>
+            <h3 data-i18n="scoring.rangesTitle">What the numbers mean</h3>
+            <p data-i18n="scoring.rangesLead">Think of the score as a viewing queue, not a verdict on the teams.</p>
             <dl class="score-ranges">
-              <div><dt class="score-6">90&ndash;100</dt><dd>A classic. Absolute cinema. One for the archive.</dd></div>
-              <div><dt class="score-4">75&ndash;89</dt><dd>This one delivers. Watch it before someone spoils it.</dd></div>
-              <div><dt class="score-3">60&ndash;74</dt><dd>A proper watch. Earns its place in the queue.</dd></div>
-              <div><dt class="score-1">40&ndash;59</dt><dd>Decent value, particularly if you follow one of these sides.</dd></div>
-              <div><dt class="score-0">0&ndash;39</dt><dd>For the faithful only. Otherwise, save yourself 90 minutes.</dd></div>
+              <div><dt class="score-6">90&ndash;100</dt><dd data-i18n="scoring.band6">A classic. Absolute cinema. One for the archive.</dd></div>
+              <div><dt class="score-4">75&ndash;89</dt><dd data-i18n="scoring.band4">This one delivers. Watch it before someone spoils it.</dd></div>
+              <div><dt class="score-3">60&ndash;74</dt><dd data-i18n="scoring.band3">A proper watch. Earns its place in the queue.</dd></div>
+              <div><dt class="score-1">40&ndash;59</dt><dd data-i18n="scoring.band1">Decent value, particularly if you follow one of these sides.</dd></div>
+              <div><dt class="score-0">0&ndash;39</dt><dd data-i18n="scoring.band0">For the faithful only. Otherwise, save yourself 90 minutes.</dd></div>
             </dl>
           </section>
-          <p class="model-info" id="scoring-model-info">Scoring model details loading&hellip;</p>
+          <p class="model-info" id="scoring-model-info" data-i18n="scoring.modelLoading">Scoring model details loading&hellip;</p>
         </div>
-        <nav class="info-pagination" aria-label="About Aftermatch pages">
+        <nav class="info-pagination" data-i18n-aria-label="about.pages" aria-label="About Aftermatch pages">
           <button id="scoring-to-about" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M19 12H5"></path>
               <path d="m11 18-6-6 6-6"></path>
             </svg>
-            <span>What is Aftermatch?</span>
+            <span data-i18n="footer.about">What is Aftermatch?</span>
           </button>
           <button id="scoring-to-coverage" type="button">
-            <span>Coverage</span>
+            <span data-i18n="footer.coverage">Coverage</span>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
@@ -196,8 +203,8 @@
     <dialog id="coverage-dialog" class="about-dialog coverage-dialog" aria-labelledby="coverage-title" closedby="any">
       <article>
         <header>
-          <h2 id="coverage-title" tabindex="-1">Coverage</h2>
-          <button class="dialog-close" id="close-coverage" type="button" aria-label="Close Coverage" title="Close">
+          <h2 id="coverage-title" tabindex="-1" data-i18n="coverage.title">Coverage</h2>
+          <button class="dialog-close" id="close-coverage" type="button" data-i18n-aria-label="coverage.close" data-i18n-title="coverage.close">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18 6 6 18"></path>
               <path d="m6 6 12 12"></path>
@@ -205,21 +212,21 @@
           </button>
         </header>
         <div class="coverage-body">
-          <p class="coverage-intro">Finished matches currently available, grouped by competition and season.</p>
+          <p class="coverage-intro" data-i18n="coverage.intro">Finished matches currently available, grouped by competition and season.</p>
           <div id="coverage-regions" aria-live="polite">
-            <p class="coverage-loading">Coverage is loading&hellip;</p>
+            <p class="coverage-loading" data-i18n="coverage.loading">Coverage is loading&hellip;</p>
           </div>
         </div>
-        <nav class="info-pagination" aria-label="About Aftermatch pages">
+        <nav class="info-pagination" data-i18n-aria-label="about.pages" aria-label="About Aftermatch pages">
           <button id="coverage-to-scoring" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M19 12H5"></path>
               <path d="m11 18-6-6 6-6"></path>
             </svg>
-            <span>How scoring works</span>
+            <span data-i18n="footer.scoring">How scoring works</span>
           </button>
           <button id="coverage-to-about" type="button">
-            <span>What is Aftermatch?</span>
+            <span data-i18n="footer.about">What is Aftermatch?</span>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
@@ -232,8 +239,8 @@
     <dialog id="filter-dialog" class="filter-dialog">
       <form id="explore-form" method="dialog">
         <header>
-          <h2>Explore matches</h2>
-          <button class="dialog-close" value="cancel" aria-label="Close Explore matches" title="Close">
+          <h2 data-i18n="explore.title">Explore matches</h2>
+          <button class="dialog-close" value="cancel" data-i18n-aria-label="explore.close" data-i18n-title="explore.close">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18 6 6 18"></path>
               <path d="m6 6 12 12"></path>
@@ -242,17 +249,17 @@
         </header>
         <div class="explore-body">
           <fieldset class="time-range-picker">
-          <legend>When</legend>
+          <legend data-i18n="explore.when">When</legend>
           <div class="time-range-options">
-            <label><input type="radio" name="time-range" value="3d"> <span>3 days</span></label>
-            <label><input type="radio" name="time-range" value="7d"> <span>7 days</span></label>
-            <label><input type="radio" name="time-range" value="30d"> <span>30 days</span></label>
-            <label><input type="radio" name="time-range" value="all"> <span>All available</span></label>
-            <label><input type="radio" name="time-range" value="date"> <span>Specific date</span></label>
-            <label><input type="radio" name="time-range" value="custom"> <span>Custom range</span></label>
+            <label><input type="radio" name="time-range" value="3d"> <span data-i18n="explore.range.3d">3 days</span></label>
+            <label><input type="radio" name="time-range" value="7d"> <span data-i18n="explore.range.7d">7 days</span></label>
+            <label><input type="radio" name="time-range" value="30d"> <span data-i18n="explore.range.30d">30 days</span></label>
+            <label><input type="radio" name="time-range" value="all"> <span data-i18n="explore.range.all">All available</span></label>
+            <label><input type="radio" name="time-range" value="date"> <span data-i18n="explore.range.date">Specific date</span></label>
+            <label><input type="radio" name="time-range" value="custom"> <span data-i18n="explore.range.custom">Custom range</span></label>
           </div>
           <div class="explore-date-field" id="specific-date-field" hidden>
-            <span id="specific-date-label">Date</span>
+            <span id="specific-date-label" data-i18n="explore.date">Date</span>
             <input id="specific-date" type="hidden">
             <button class="date-picker-trigger" type="button" data-date-target="specific-date" aria-labelledby="specific-date-label specific-date-display" aria-haspopup="dialog" aria-expanded="false">
               <span class="date-picker-value" id="specific-date-display"></span>
@@ -261,7 +268,7 @@
           </div>
           <div class="custom-date-fields" id="custom-date-fields" hidden>
             <div class="custom-date-field">
-              <span id="range-start-label">From</span>
+              <span id="range-start-label" data-i18n="explore.from">From</span>
               <input id="range-start" type="hidden">
               <button class="date-picker-trigger" type="button" data-date-target="range-start" aria-labelledby="range-start-label range-start-display" aria-haspopup="dialog" aria-expanded="false">
                 <span class="date-picker-value" id="range-start-display"></span>
@@ -269,7 +276,7 @@
               </button>
             </div>
             <div class="custom-date-field">
-              <span id="range-end-label">Through</span>
+              <span id="range-end-label" data-i18n="explore.through">Through</span>
               <input id="range-end" type="hidden">
               <button class="date-picker-trigger" type="button" data-date-target="range-end" aria-labelledby="range-end-label range-end-display" aria-haspopup="dialog" aria-expanded="false">
                 <span class="date-picker-value" id="range-end-display"></span>
@@ -279,24 +286,24 @@
           </div>
           <div class="calendar-popover" id="calendar-popover" role="dialog" aria-modal="false" aria-labelledby="calendar-month" hidden>
             <div class="calendar-header">
-              <button class="calendar-nav" id="calendar-previous" type="button" aria-label="Previous month" title="Previous month">
+              <button class="calendar-nav" id="calendar-previous" type="button" data-i18n-aria-label="calendar.previous" data-i18n-title="calendar.previous">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
               </button>
               <strong id="calendar-month"></strong>
-              <button class="calendar-nav" id="calendar-next" type="button" aria-label="Next month" title="Next month">
+              <button class="calendar-nav" id="calendar-next" type="button" data-i18n-aria-label="calendar.next" data-i18n-title="calendar.next">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
               </button>
             </div>
             <div class="calendar-weekdays" aria-hidden="true">
-              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+              <span data-i18n="calendar.weekday.sun">Su</span><span data-i18n="calendar.weekday.mon">Mo</span><span data-i18n="calendar.weekday.tue">Tu</span><span data-i18n="calendar.weekday.wed">We</span><span data-i18n="calendar.weekday.thu">Th</span><span data-i18n="calendar.weekday.fri">Fr</span><span data-i18n="calendar.weekday.sat">Sa</span>
             </div>
-            <div class="calendar-days" id="calendar-days" role="group" aria-label="Choose date"></div>
+            <div class="calendar-days" id="calendar-days" role="group" data-i18n-aria-label="calendar.choose" aria-label="Choose date"></div>
           </div>
-          <p class="coverage-note" id="coverage-note">Result coverage is loading.</p>
+          <p class="coverage-note" id="coverage-note" data-i18n="explore.coverageLoading">Result coverage is loading.</p>
           </fieldset>
           <details class="sheet-range">
             <summary>
-              <span id="minimum-score-label">Minimum score</span>
+              <span id="minimum-score-label" data-i18n="explore.minimumScore">Minimum score</span>
               <output id="sheet-score-output" for="sheet-score-range">0</output>
             </summary>
             <div class="score-range-control">
@@ -306,19 +313,19 @@
           </details>
           <div class="competition-picker">
           <label class="competition-search">
-            <span>Competitions</span>
-            <input id="competition-search" type="search" placeholder="Search by competition or country" autocomplete="off">
+            <span data-i18n="explore.competitions">Competitions</span>
+            <input id="competition-search" type="search" data-i18n-placeholder="explore.searchPlaceholder" placeholder="Search by competition or country" autocomplete="off">
           </label>
           <div class="selection-summary">
-            <span id="picker-selection-summary">All competitions</span>
-            <button class="text-button" id="clear-competitions" type="button" hidden>Clear all</button>
+            <span id="picker-selection-summary" data-i18n="explore.allCompetitions">All competitions</span>
+            <button class="text-button" id="clear-competitions" type="button" data-i18n="explore.clearAll" hidden>Clear all</button>
           </div>
           <div id="competition-options" class="competition-options"></div>
           </div>
         </div>
         <footer>
-          <button class="secondary-button" id="reset-filters" type="button">Reset</button>
-          <button class="primary-button" value="apply">Show results</button>
+          <button class="secondary-button" id="reset-filters" type="button" data-i18n="explore.reset">Reset</button>
+          <button class="primary-button" value="apply" data-i18n="explore.apply">Show results</button>
         </footer>
       </form>
     </dialog>
@@ -326,7 +333,7 @@
     <template id="loading-template">
       <div class="loading-state" role="status" aria-live="polite">
         <div class="loading-orb" data-thinking-orb></div>
-        <p>Loading matches</p>
+        <p data-i18n="state.loading">Loading matches</p>
       </div>
     </template>
 

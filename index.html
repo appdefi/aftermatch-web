@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Merriweather:wght@700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-sgujuYya.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DZ8ISKfi.css">
+    <script type="module" crossorigin src="./assets/index-DWxCVB-T.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dj1l2Ugw.css">
   </head>
   <body>
     <aside class="prototype-bar" aria-label="Prototype controls" hidden>
@@ -171,20 +171,32 @@
         </header>
         <div class="scoring-body">
           <section class="scoring-section">
-            <p data-i18n="scoring.body1">When a match finishes, we run it through the scoring model. It looks at how the likely result shifted across the 90 minutes, when those shifts happened, how long the outcome stayed in doubt, and how the finish compared to what the bookmakers expected beforehand.</p>
-            <p data-i18n="scoring.body2">Goals, cards, penalties and saves feed in as well, alongside rivalry and whatever was riding on the result.</p>
-            <p data-i18n-html="scoring.body3">Late drama counts for more than early drama. A big occasion raises the score of a good match, though it can't rescue a flat one, and a single wild moment in an otherwise quiet game only goes so far. All of it comes out as one number between <strong class="scoring-value score-0">0</strong> and <strong class="scoring-value score-6">100</strong>.</p>
+            <p data-i18n="scoring.body1">Matches score highest when the result stays in doubt until late.</p>
+            <p data-i18n="scoring.body2">Upsets, comebacks, goals and big stakes all push a score up.</p>
+            <p data-i18n="scoring.body3">A favourite cruising to an easy win, or a goalless draw, pulls it down.</p>
           </section>
-          <section class="scoring-section">
-            <h3 data-i18n="scoring.rangesTitle">What the numbers mean</h3>
-            <dl class="score-ranges">
-              <div><dt class="score-6">90&ndash;100</dt><dd data-i18n="scoring.band6">Unmissable. Matches like this are rare.</dd></div>
-              <div><dt class="score-4">75&ndash;89</dt><dd data-i18n="scoring.band4">Excellent. Make time for this one.</dd></div>
-              <div><dt class="score-3">60&ndash;74</dt><dd data-i18n="scoring.band3">Good. Worth watching in full.</dd></div>
-              <div><dt class="score-1">40&ndash;59</dt><dd data-i18n="scoring.band1">Fair. Best if you care who wins.</dd></div>
-              <div><dt class="score-0">0&ndash;39</dt><dd data-i18n="scoring.band0">Flat. Skip it unless it&rsquo;s your team.</dd></div>
-            </dl>
-          </section>
+          <details class="scoring-disclosure" id="scoring-ranges">
+            <summary data-i18n="scoring.rangesTitle">What the numbers mean</summary>
+            <div class="scoring-disclosure-body">
+              <dl class="score-ranges">
+                <div><dt class="score-6">90&ndash;100</dt><dd data-i18n="scoring.band6">Unmissable. Matches like this are rare.</dd></div>
+                <div><dt class="score-4">75&ndash;89</dt><dd data-i18n="scoring.band4">Excellent. Make time for this one.</dd></div>
+                <div><dt class="score-3">60&ndash;74</dt><dd data-i18n="scoring.band3">Good. Worth watching in full.</dd></div>
+                <div><dt class="score-1">40&ndash;59</dt><dd data-i18n="scoring.band1">Fair. Best if you care who wins.</dd></div>
+                <div><dt class="score-0">0&ndash;39</dt><dd data-i18n="scoring.band0">Flat. Skip it unless it&rsquo;s your team.</dd></div>
+              </dl>
+            </div>
+          </details>
+          <details class="scoring-disclosure">
+            <summary data-i18n="scoring.methodTitle">Methodology</summary>
+            <div class="scoring-disclosure-body">
+              <p data-i18n="scoring.methodLead">Each score comes from a win-probability model run on the match&rsquo;s events, stats and pre-match betting markets.</p>
+              <p data-i18n-html="scoring.methodFlow"><strong>Match flow.</strong> Starting from the pre-match odds, the model recalculates each side&rsquo;s chances at every event, then measures how far they moved, when, and how long the result stayed open. Late movement carries more weight.</p>
+              <p data-i18n-html="scoring.methodEvents"><strong>Match events.</strong> Goals, cards, penalties, saves and shot volume, weighted so that goals aren&rsquo;t counted twice.</p>
+              <p data-i18n-html="scoring.methodContext"><strong>Context.</strong> What the match decided, from table position late in a season to knockout rounds and aggregate scores, plus established rivalries. Stakes amplify what happened on the pitch; they don&rsquo;t replace it.</p>
+              <p data-i18n="scoring.methodStandards">Scoring is deterministic and versioned. The same match data always produces the same score, and no score is adjusted by hand. Every match is rescored when the model changes, and each release is checked against a set of reference matches. If a match&rsquo;s data can&rsquo;t be retrieved, it gets no score rather than an estimate.</p>
+            </div>
+          </details>
           <p class="model-info" id="scoring-model-info" data-i18n="scoring.modelLoading">Scoring model details loading&hellip;</p>
         </div>
         <nav class="info-pagination" data-i18n-aria-label="about.pages" aria-label="About Aftermatch pages">

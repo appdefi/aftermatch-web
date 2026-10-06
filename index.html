@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Merriweather:wght@700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-BIgQ21iC.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Dj1l2Ugw.css">
+    <script type="module" crossorigin src="./assets/index-L4pK-sLQ.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DP-WOYsc.css">
   </head>
   <body>
     <aside class="prototype-bar" aria-label="Prototype controls" hidden>
@@ -28,6 +28,20 @@
             <option value="empty">No matches</option>
           </select>
         </label>
+        <label>
+          Region
+          <select id="prototype-region">
+            <option value="">Detected</option>
+            <option value="Europe">Europe</option>
+            <option value="North America">North America</option>
+            <option value="South America">South America</option>
+            <option value="Asia">Asia</option>
+            <option value="Africa">Africa</option>
+            <option value="Oceania">Oceania</option>
+            <option value="none">Unknown</option>
+          </select>
+        </label>
+        <button class="prototype-button" id="prototype-first-visit" type="button">Replay first visit</button>
         <button class="prototype-button" id="prototype-intro-reset" type="button">Show intro again</button>
       </div>
     </aside>
@@ -112,6 +126,13 @@
           <path d="m13 6 6 6-6 6"></path>
         </svg>
       </button>
+    </div>
+
+    <div class="region-coach" id="region-coach" popover="manual" role="dialog" aria-labelledby="region-coach-title">
+      <span class="region-coach-globe" aria-hidden="true"></span>
+      <p class="region-coach-title" id="region-coach-title"></p>
+      <p class="region-coach-body" data-i18n="regionNotice.coachBody">Change your competitions here.</p>
+      <button class="region-coach-ok" type="button" data-i18n="regionNotice.gotIt">Got it</button>
     </div>
 
     <dialog id="about-dialog" class="about-dialog" aria-labelledby="about-title" closedby="any">

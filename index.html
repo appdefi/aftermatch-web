@@ -3,7 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light">
+    <meta name="color-scheme" content="light dark">
+    <script>
+      // Applies the theme before first paint so a dark page never flashes
+      // light: the reader's stored choice, else the system setting.
+      (() => {
+        let theme = null;
+        try {
+          theme = localStorage.getItem("aftermatch.theme");
+        } catch (error) {
+          // Without storage the system setting decides.
+        }
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="color-scheme"]').content = theme;
+      })();
+    </script>
     <title>Aftermatch</title>
     <link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-dark-v2-64-DmMTXE_6.png">
     <link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-dark-v2-64-DmMTXE_6.png" media="(prefers-color-scheme: light)">
@@ -11,8 +28,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Merriweather:wght@700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-BR_OgBBP.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Cs8uj0Gn.css">
+    <script type="module" crossorigin src="./assets/index-CEFEehNc.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BwpobTv5.css">
   </head>
   <body>
     <aside class="prototype-bar" aria-label="Prototype controls" hidden>
@@ -51,7 +68,7 @@
         <div class="hero-brand">
           <h1 id="page-title">
             <button class="home-button" id="go-home" type="button" data-i18n-aria-label="app.home">
-              <img src="./assets/aftermatch-wordmark-dark-v2-640-B35NCqX9.png" width="640" height="98" alt="">
+              <span class="wordmark" aria-hidden="true"></span>
             </button>
           </h1>
           <p class="tagline" data-i18n="app.tagline">Football worth watching.</p>
@@ -106,6 +123,15 @@
             </span>
           </div>
           <div class="footer-controls">
+            <button class="about-trigger theme-toggle" id="toggle-theme" type="button">
+              <svg class="theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"></path>
+              </svg>
+              <svg class="theme-icon-light" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"></path>
+              </svg>
+            </button>
             <div class="language-switcher">
               <button class="about-trigger language-trigger" id="open-language" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="language-menu">
                 <span class="language-flag" id="language-flag" aria-hidden="true"></span>

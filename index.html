@@ -3,18 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light">
+    <meta name="color-scheme" content="light dark">
     <script>
       // Applies the theme before first paint so a dark page never flashes
-      // light. The page starts light; dark is the reader's choice alone.
+      // light: the reader's stored choice, else the system setting.
       (() => {
-        let theme = "light";
+        let theme = null;
         try {
-          if (localStorage.getItem("aftermatch.theme") === "dark") {
-            theme = "dark";
-          }
+          theme = localStorage.getItem("aftermatch.theme");
         } catch (error) {
-          // Without storage the page stays light.
+          // Without storage the system setting decides.
+        }
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
         }
         document.documentElement.dataset.theme = theme;
         document.querySelector('meta[name="color-scheme"]').content = theme;
@@ -27,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Merriweather:wght@700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-tuCtjXmJ.js"></script>
+    <script type="module" crossorigin src="./assets/index-BlgT1E6U.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-D1BrvUJ2.css">
   </head>
   <body>

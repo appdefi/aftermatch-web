@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <script>
+      // Applies the theme before first paint, as index.html does: the reader's
+      // stored choice, else the system setting.
+      (() => {
+        let theme = null;
+        try {
+          theme = localStorage.getItem("aftermatch.theme");
+        } catch (error) {
+          // Without storage the system setting decides.
+        }
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="color-scheme"]').content = theme;
+      })();
+    </script>
+    <title>League stats - Aftermatch</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-dark-v2-64-DmMTXE_6.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-dark-v2-64-DmMTXE_6.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-light-v2-64-D_A7P-HG.png" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Merriweather:wght@700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="../assets/stats-BUutNP97.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/theme-toggle-GJp4ImHr.js">
+    <link rel="stylesheet" crossorigin href="../assets/theme-toggle-B3OzEZL7.css">
+    <link rel="stylesheet" crossorigin href="../assets/stats-DfiqSxCq.css">
+  </head>
+  <body class="stats-page">
+    <main class="app-shell">
+      <header class="browse-header">
+        <div class="hero-brand">
+          <h1>
+            <a class="home-button" href="../" data-i18n-aria-label="app.home" aria-label="Aftermatch home">
+              <span class="wordmark" aria-hidden="true"></span>
+            </a>
+          </h1>
+          <p class="tagline" data-i18n="stats.tagline">League stats</p>
+        </div>
+        <div class="football-hero" aria-hidden="true"></div>
+        <div class="browse-actions">
+          <div class="view-switch" id="season-filter" role="group" data-i18n-aria-label="stats.seasonGroup" aria-label="Season">
+            <button class="view-button" type="button" data-value="latest" aria-pressed="true" data-i18n="stats.season.latest">Latest season</button>
+            <button class="view-button" type="button" data-value="previous" aria-pressed="false" data-i18n="stats.season.previous">Previous season</button>
+            <button class="view-button" type="button" data-value="all" aria-pressed="false" data-i18n="stats.season.all">All seasons</button>
+          </div>
+          <div class="view-switch" id="region-filter" role="group" data-i18n-aria-label="stats.regionGroup" aria-label="Region">
+            <button class="view-button" type="button" data-value="all" aria-pressed="true" data-i18n="stats.region.all">All</button>
+            <button class="view-button" type="button" data-value="Europe" aria-pressed="false" data-i18n="region.Europe">Europe</button>
+            <button class="view-button" type="button" data-value="Americas" aria-pressed="false" data-i18n="stats.region.americas">Americas</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="stats-intro" aria-labelledby="stats-heading">
+        <p class="eyebrow" data-i18n="stats.eyebrow">Competition comparison</p>
+        <h2 class="stats-title" id="stats-heading" data-i18n="stats.title">How the competitions score</h2>
+        <p class="stats-lede" data-i18n="stats.lede">The average Aftermatch score and the spread of scores across the five ranges, for every competition we cover.</p>
+        <p class="stats-scope" id="stats-scope" aria-live="polite"></p>
+      </section>
+
+      <div id="stats-status" aria-live="polite"></div>
+
+      <div id="stats-body" hidden>
+        <section class="stats-tiles" id="stats-tiles" data-i18n-aria-label="stats.summary" aria-label="Summary"></section>
+
+        <section class="stats-section" aria-labelledby="average-heading">
+          <div class="stats-section-heading">
+            <div>
+              <h2 id="average-heading" data-i18n="stats.average.title">Average score</h2>
+              <p data-i18n="stats.average.body">Highest first. The marker is the average across every match in view.</p>
+            </div>
+            <span class="stats-count" id="average-count"></span>
+          </div>
+          <div class="stats-panel" id="average-chart"></div>
+        </section>
+
+        <section class="stats-section" aria-labelledby="ranges-heading">
+          <div class="stats-section-heading">
+            <div>
+              <h2 id="ranges-heading" data-i18n="stats.ranges.title">Matches by score range</h2>
+              <p data-i18n="stats.ranges.body">Same order as above. Each bar splits a competition's matches by range.</p>
+            </div>
+            <div class="view-switch is-small" id="mode-filter" role="group" data-i18n-aria-label="stats.ranges.modeGroup" aria-label="Show ranges as">
+              <button class="view-button" type="button" data-value="share" aria-pressed="true" data-i18n="stats.ranges.share">Share</button>
+              <button class="view-button" type="button" data-value="count" aria-pressed="false" data-i18n="stats.ranges.count">Matches</button>
+            </div>
+          </div>
+          <div class="stats-panel" id="ranges-chart"></div>
+        </section>
+
+        <section class="stats-section" aria-labelledby="table-heading">
+          <div class="stats-section-heading">
+            <div>
+              <h2 id="table-heading" data-i18n="stats.table.title">Side by side</h2>
+              <p data-i18n="stats.table.body">Every figure above in one table. Select a column to sort.</p>
+            </div>
+            <span class="stats-count" id="table-count"></span>
+          </div>
+          <div class="stats-table-wrap" id="comparison-table"></div>
+        </section>
+
+        <section class="stats-section" aria-labelledby="h2h-heading">
+          <div class="stats-section-heading">
+            <div>
+              <h2 id="h2h-heading" data-i18n="stats.h2h.title">Head to head</h2>
+              <p data-i18n="stats.h2h.body">Pick two competitions to compare their scores directly.</p>
+            </div>
+          </div>
+          <div class="stats-panel" id="head-to-head"></div>
+        </section>
+      </div>
+
+      <footer class="app-footer utility-actions">
+        <div class="footer-links">
+          <a class="about-trigger" href="../" data-i18n="stats.backToMatches">Back to matches</a>
+        </div>
+        <div class="footer-meta">
+          <div class="freshness" aria-live="polite">
+            <span class="freshness-copy">
+              <span id="generated-at" data-i18n="footer.updating">Updating&hellip;</span>
+              <span id="scoring-model"></span>
+            </span>
+          </div>
+          <div class="footer-controls">
+            <button class="about-trigger theme-toggle" id="toggle-theme" type="button">
+              <svg class="theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"></path>
+              </svg>
+              <svg class="theme-icon-light" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"></path>
+              </svg>
+            </button>
+            <div class="language-switcher">
+              <button class="about-trigger language-trigger" id="open-language" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="language-menu">
+                <span class="language-flag" id="language-flag" aria-hidden="true"></span>
+                <span class="language-name" id="language-name">English</span>
+              </button>
+              <div class="language-menu" id="language-menu" role="menu" data-i18n-aria-label="language.label" hidden></div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <div class="stats-tooltip" id="stats-tooltip" role="tooltip" hidden></div>
+
+  </body>
+</html>

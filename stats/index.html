@@ -28,10 +28,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Merriweather:wght@700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="../assets/stats-BUutNP97.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/theme-toggle-GJp4ImHr.js">
+    <script type="module" crossorigin src="../assets/stats-DvTui30x.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/theme-toggle-Cds9GL85.js">
     <link rel="stylesheet" crossorigin href="../assets/theme-toggle-B3OzEZL7.css">
-    <link rel="stylesheet" crossorigin href="../assets/stats-DfiqSxCq.css">
+    <link rel="stylesheet" crossorigin href="../assets/stats-DMtWy5f9.css">
   </head>
   <body class="stats-page">
     <main class="app-shell">
@@ -44,27 +44,49 @@
           </h1>
           <p class="tagline" data-i18n="stats.tagline">League stats</p>
         </div>
-        <div class="football-hero" aria-hidden="true"></div>
+        <div class="football-hero" aria-hidden="true">
+          <canvas class="football-hero-ball" data-football-hero></canvas>
+        </div>
         <div class="browse-actions">
-          <div class="view-switch" id="season-filter" role="group" data-i18n-aria-label="stats.seasonGroup" aria-label="Season">
-            <button class="view-button" type="button" data-value="latest" aria-pressed="true" data-i18n="stats.season.latest">Latest season</button>
-            <button class="view-button" type="button" data-value="previous" aria-pressed="false" data-i18n="stats.season.previous">Previous season</button>
-            <button class="view-button" type="button" data-value="all" aria-pressed="false" data-i18n="stats.season.all">All seasons</button>
+          <div class="stats-picker" id="season-picker">
+            <button class="stats-picker-trigger is-season" id="season-trigger" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="season-panel" disabled>
+              <span id="season-trigger-label" data-i18n="stats.season.latest">Latest season</span>
+              <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 5.5 7 9l3.5-3.5"></path></svg>
+            </button>
+            <div class="stats-picker-panel is-narrow" id="season-panel" role="dialog" data-i18n-aria-label="stats.seasonGroup" aria-label="Season" hidden>
+              <div class="view-switch is-small" id="season-presets" role="group" data-i18n-aria-label="stats.picker.quick" aria-label="Quick pick">
+                <button class="view-button" type="button" data-season="latest" aria-pressed="true" data-i18n="stats.season.latest">Latest season</button>
+                <button class="view-button" type="button" data-season="all" aria-pressed="false" data-i18n="stats.season.all">All seasons</button>
+              </div>
+              <div class="stats-picker-list" id="season-list" role="radiogroup" data-i18n-aria-label="stats.seasonGroup" aria-label="Season"></div>
+            </div>
           </div>
-          <div class="view-switch" id="region-filter" role="group" data-i18n-aria-label="stats.regionGroup" aria-label="Region">
-            <button class="view-button" type="button" data-value="all" aria-pressed="true" data-i18n="stats.region.all">All</button>
-            <button class="view-button" type="button" data-value="Europe" aria-pressed="false" data-i18n="region.Europe">Europe</button>
-            <button class="view-button" type="button" data-value="Americas" aria-pressed="false" data-i18n="stats.region.americas">Americas</button>
+          <div class="stats-picker" id="competition-picker">
+            <button class="stats-picker-trigger" id="competition-trigger" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="competition-panel" disabled>
+              <span id="competition-trigger-label" data-i18n="stats.picker.all">All competitions</span>
+              <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 5.5 7 9l3.5-3.5"></path></svg>
+            </button>
+            <div class="stats-picker-panel" id="competition-panel" role="dialog" data-i18n-aria-label="stats.picker.label" aria-label="Competitions" hidden>
+              <div class="view-switch is-small" id="competition-presets" role="group" data-i18n-aria-label="stats.picker.quick" aria-label="Quick pick">
+                <button class="view-button" type="button" data-preset="all" aria-pressed="true" data-i18n="stats.region.all">All</button>
+                <button class="view-button" type="button" data-preset="Europe" aria-pressed="false" data-i18n="region.Europe">Europe</button>
+                <button class="view-button" type="button" data-preset="Americas" aria-pressed="false" data-i18n="stats.region.americas">Americas</button>
+              </div>
+              <div class="stats-picker-search">
+                <input id="competition-search" type="search" autocomplete="off" data-i18n-placeholder="explore.searchPlaceholder" data-i18n-aria-label="explore.searchPlaceholder" placeholder="Search by competition or country" aria-label="Search by competition or country">
+                <button class="stats-icon-button" id="competition-search-clear" type="button" data-i18n-aria-label="stats.picker.clearSearch" aria-label="Clear search" hidden>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+                </button>
+              </div>
+              <div class="stats-picker-list" id="competition-list"></div>
+              <div class="stats-picker-foot">
+                <button class="text-button" id="competition-clear" type="button" data-i18n="explore.clearAll">Clear all</button>
+                <button class="primary-button" id="competition-done" type="button" data-i18n="stats.picker.done">Done</button>
+              </div>
+            </div>
           </div>
         </div>
       </header>
-
-      <section class="stats-intro" aria-labelledby="stats-heading">
-        <p class="eyebrow" data-i18n="stats.eyebrow">Competition comparison</p>
-        <h2 class="stats-title" id="stats-heading" data-i18n="stats.title">How the competitions score</h2>
-        <p class="stats-lede" data-i18n="stats.lede">The average Aftermatch score and the spread of scores across the five ranges, for every competition we cover.</p>
-        <p class="stats-scope" id="stats-scope" aria-live="polite"></p>
-      </section>
 
       <div id="stats-status" aria-live="polite"></div>
 
@@ -75,7 +97,6 @@
           <div class="stats-section-heading">
             <div>
               <h2 id="average-heading" data-i18n="stats.average.title">Average score</h2>
-              <p data-i18n="stats.average.body">Highest first. The marker is the average across every match in view.</p>
             </div>
             <span class="stats-count" id="average-count"></span>
           </div>
@@ -86,7 +107,6 @@
           <div class="stats-section-heading">
             <div>
               <h2 id="ranges-heading" data-i18n="stats.ranges.title">Matches by score range</h2>
-              <p data-i18n="stats.ranges.body">Same order as above. Each bar splits a competition's matches by range.</p>
             </div>
             <div class="view-switch is-small" id="mode-filter" role="group" data-i18n-aria-label="stats.ranges.modeGroup" aria-label="Show ranges as">
               <button class="view-button" type="button" data-value="share" aria-pressed="true" data-i18n="stats.ranges.share">Share</button>
@@ -100,7 +120,6 @@
           <div class="stats-section-heading">
             <div>
               <h2 id="table-heading" data-i18n="stats.table.title">Side by side</h2>
-              <p data-i18n="stats.table.body">Every figure above in one table. Select a column to sort.</p>
             </div>
             <span class="stats-count" id="table-count"></span>
           </div>
@@ -111,7 +130,6 @@
           <div class="stats-section-heading">
             <div>
               <h2 id="h2h-heading" data-i18n="stats.h2h.title">Head to head</h2>
-              <p data-i18n="stats.h2h.body">Pick two competitions to compare their scores directly.</p>
             </div>
           </div>
           <div class="stats-panel" id="head-to-head"></div>
@@ -152,6 +170,14 @@
     </main>
 
     <div class="stats-tooltip" id="stats-tooltip" role="tooltip" hidden></div>
+
+    <div class="stats-popover" id="best-popover" popover="manual" role="dialog" aria-labelledby="best-popover-title">
+      <p class="stats-tooltip-title" id="best-popover-title"></p>
+      <div class="stats-popover-body" id="best-popover-body"></div>
+      <button class="stats-icon-button stats-popover-close" id="best-popover-close" type="button" data-i18n-aria-label="stats.best.close" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+      </button>
+    </div>
 
   </body>
 </html>
